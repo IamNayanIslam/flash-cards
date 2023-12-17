@@ -1,6 +1,12 @@
 import "./Card.css";
 
-export default function Card({ question, handleClick, selectedId, isClicked }) {
+export default function Card({ question, selectedId, setSelectedId }) {
+  const isClicked = question.id === selectedId;
+
+  const handleClick = (id) => {
+    const value = isClicked ? null : id;
+    setSelectedId(value);
+  };
   return (
     <div
       onClick={() => handleClick(question.id)}
